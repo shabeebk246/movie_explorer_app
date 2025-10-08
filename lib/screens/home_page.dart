@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_explorer_app/constants/image_constants.dart';
 import 'package:movie_explorer_app/main.dart';
 import 'package:http/http.dart' as http;
+import 'package:movie_explorer_app/movie_detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -153,7 +154,14 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadiusGeometry.circular(width*0.03),
                             child: Stack(
                               children: [
-                                Image.network(data[0]['poster'])
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailPage(),)
+                                    );
+                                  },
+                                  child: Image.network(data[0]['poster']),
+                                )
+
                               ],
                             ),
                           );
